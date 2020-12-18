@@ -123,6 +123,7 @@ public class CurrentTele extends OpMode {
 
         // Sets constants
         robot.turret.setShooter(1);
+        robot.intake.setIntake(1);
 
         // boolean ring_found = robot.ring_detector.alpha() < 100;
         // boolean ring_taken = robot.ring_detector.alpha() > 100;
