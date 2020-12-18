@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.opmodes.util;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -14,6 +15,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 @TeleOp(name="Lift Calibrator")
+@Disabled
 public class LiftCalibrator extends OpMode
 {
     
@@ -37,7 +39,7 @@ public class LiftCalibrator extends OpMode
     @Override
     public void loop()
     {
-        double value = turret.getRawPos()[1] / 3.3;
+        double value = turret.getRawPos()[2] / 3.3;
         int pos = enc.getCurrentPosition();
         telemetry.addData("voltage", "%.3f", value);
         telemetry.addData("pos", pos);
@@ -57,7 +59,7 @@ public class LiftCalibrator extends OpMode
         int range = maxPos - minPos;
         Integer[] keys = data.keySet().toArray(new Integer[0]);
         Arrays.sort(keys);
-        try (FileWriter w = new FileWriter(Storage.createFile("lift_cal_r.csv")))
+        try (FileWriter w = new FileWriter(Storage.createFile("lift_cal_turret.csv")))
         {
             int i = keys.length;
             while (i --> 0)
